@@ -1,0 +1,23 @@
+{% extends "tareas/base.html" %}
+{% load static %}
+{% block title %}Eliminar Tarea{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'tareas/delete.css' %}">
+{% endblock %}
+{% block body_class %}page-delete{% endblock %}
+
+{% block content %}
+  <section class="card card-danger borrar-tarea">
+    <div class="card-header">
+      <h2 class="card-title">¿Eliminar "{{ object.titulo }}"?</h2>
+    </div>
+    <div class="card-body">
+      <p>Esta acción no se puede deshacer.</p>
+      <form method="post">{% csrf_token %}
+        <button type="submit" class="btn btn-danger">Confirmar</button>
+        <a href="{% url 'tareas:tarea_list' %}" class="btn btn-secondary">Cancelar</a>
+      </form>
+    </div>
+  </section>
+{% endblock %}

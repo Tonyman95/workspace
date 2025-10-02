@@ -1,0 +1,38 @@
+{% extends "tareas/base.html" %}
+{% load static %}
+{% block title %}Listado de Tareas{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'tareas/list.css' %}">
+{% endblock %}
+{% block body_class %}page-list{% endblock %}
+
+{% block content %}
+  <h2>Listado de Tareas</h2>
+  {% if object_list %}
+    <ul class="card-list listado">
+      {% for tarea in object_list %}
+        <li class="card item-tarea">
+          <div class="card-header">
+            <a class="card-title" href="{% url 'tareas:tarea_detail' tarea.pk %}">{{ tarea.titulo }}</a>
+            <span class="badge {% if tarea.vigente %}badge-success{% else %}badge-danger{% endif %}">
+              {% if tarea.vigente %}Vigente{% else %}No vigente{% endif %}
+            </span>
+          </div>
+          <div class="card-body">
+            <p class="muted">
+              Prioridad {{ tarea.prioridad }}
+              {% if tarea.fecha_limite %} · Vence: {{ tarea.fecha_limite }}{% endif %}
+            </p>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-secondary" href="{% url 'tareas:tarea_update' tarea.pk %}">Editar</a>
+            <a class="btn btn-danger" href="{% url 'tareas:tarea_delete' tarea.pk %}">Eliminar</a>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="muted">No hay tareas.</p>
+  {% endif %}
+{% endblock %}

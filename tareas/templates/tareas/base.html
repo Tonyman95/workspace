@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}Gestor de Tareas{% endblock %}</title>
+
+  <!-- CSS global -->
+  <link rel="stylesheet" href="{% static 'tareas/styles.css' %}">
+
+  <!-- CSS por página -->
+  {% block extra_css %}{% endblock %}
+</head>
+<body class="{% block body_class %}{% endblock %}">
+  <header class="site-header">
+    <div class="container">
+      <h1 class="site-title"><a href="{% url 'tareas:tarea_list' %}">Gestor de Tareas</a></h1>
+      <nav class="site-nav">
+        <a class="btn" href="{% url 'tareas:tarea_create' %}">➕ Nueva tarea</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>© {% now "Y" %} Gestor de Tareas</small>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,5 @@
+/* Página de detalle */
+.page-detail .detalle-tarea .descripcion { white-space: pre-line }
+.page-detail .detalle-tarea .card-header { position: relative }
+.page-detail .detalle-tarea .badge { margin-left: 10px }
+.page-detail .card-body p { margin: 8px 0 }

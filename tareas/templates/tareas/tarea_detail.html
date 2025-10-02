@@ -1,0 +1,29 @@
+{% extends "tareas/base.html" %}
+{% load static %}
+{% block title %}{{ object.titulo }}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'tareas/detail.css' %}">
+{% endblock %}
+{% block body_class %}page-detail{% endblock %}
+
+{% block content %}
+  <article class="card detalle-tarea">
+    <div class="card-header">
+      <h2 class="card-title">{{ object.titulo }}</h2>
+      <span class="badge {% if object.vigente %}badge-success{% else %}badge-danger{% endif %}">
+        {% if object.vigente %}Vigente{% else %}No vigente{% endif %}
+      </span>
+    </div>
+    <div class="card-body">
+      <p class="descripcion">{{ object.descripcion }}</p>
+      <p class="muted">Prioridad: <strong>{{ object.prioridad }}</strong></p>
+      {% if object.fecha_limite %}<p class="muted">Fecha límite: {{ object.fecha_limite }}</p>{% endif %}
+    </div>
+    <div class="card-actions">
+      <a class="btn" href="{% url 'tareas:tarea_list' %}">Volver</a>
+      <a class="btn btn-secondary" href="{% url 'tareas:tarea_update' object.pk %}">Editar</a>
+      <a class="btn btn-danger" href="{% url 'tareas:tarea_delete' object.pk %}">Eliminar</a>
+    </div>
+  </article>
+{% endblock %}

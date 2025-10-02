@@ -1,0 +1,5 @@
+/* Página de listado */
+.page-list .listado { gap: 18px }
+.page-list .item-tarea { transition: transform .08s ease, box-shadow .15s ease }
+.page-list .item-tarea:hover { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(0,0,0,.35) }
+.page-list .card-title { text-decoration: underline; text-underline-offset: 4px }
