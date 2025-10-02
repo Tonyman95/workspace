@@ -1,3 +1,5 @@
+# Gestor de Tareas
+
 ## Estructura del proyecto
 
 ![estructura del proyecto](img/estructura%20del%20proyecto.png)
